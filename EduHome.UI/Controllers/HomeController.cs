@@ -19,7 +19,10 @@ namespace EduHome.UI.Controllers
             HomeVM homevm = new()
             {
                 Blogs=await _context.Blogs.ToListAsync(),
+<<<<<<< HEAD
                 Sliders=await _context.Sliders.ToListAsync(),
+=======
+>>>>>>> 83538c1a215db16639e5e0d75d974bbdc596408a
             };
             return View(homevm);
         }

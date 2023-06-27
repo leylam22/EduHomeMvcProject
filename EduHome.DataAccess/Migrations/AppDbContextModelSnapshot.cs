@@ -49,6 +49,7 @@ namespace EduHome.DataAccess.Migrations
 
                     b.ToTable("Blogs");
                 });
+<<<<<<< HEAD
 
             modelBuilder.Entity("EduHome.Core.Entities.Slider", b =>
                 {
@@ -78,6 +79,8 @@ namespace EduHome.DataAccess.Migrations
 
                     b.ToTable("Sliders");
                 });
+=======
+>>>>>>> 83538c1a215db16639e5e0d75d974bbdc596408a
 #pragma warning restore 612, 618
         }
     }
