@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 325be046e6bd6fcb4165e57d3a992043bd931c8b leylam22 <leylarm@code.edu.az> 1687650250 +0400	commit (initial): Add .gitattributes and .gitignore.
+325be046e6bd6fcb4165e57d3a992043bd931c8b 83538c1a215db16639e5e0d75d974bbdc596408a leylam22 <leylarm@code.edu.az> 1687650255 +0400	commit: Add project files.
+83538c1a215db16639e5e0d75d974bbdc596408a 0000000000000000000000000000000000000000 leylam22 <leylarm@code.edu.az> 1687650790 +0400	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 83538c1a215db16639e5e0d75d974bbdc596408a leylam22 <leylarm@code.edu.az> 1687650790 +0400	Branch: renamed refs/heads/master to refs/heads/main
+83538c1a215db16639e5e0d75d974bbdc596408a 04e19462f508d64d5d27e3164282c91835bee002 leylam22 <leylarm@code.edu.az> 1687830289 +0400	commit (amend): Add Sliders and read,delete functions is done

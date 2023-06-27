@@ -1,0 +1,36 @@
+Merge branch 'master' of https://github.com/leylam22/EduHomeMvcProject
+
+# Conflicts:
+#	EduHome.DataAccess/Contexts/AppDbContext.cs
+#	EduHome.DataAccess/Migrations/AppDbContextModelSnapshot.cs
+#	EduHome.UI/Areas/Admin/Views/Shared/_AdminLayout.cshtml
+#	EduHome.UI/Areas/Admin/Views/_ViewImports.cshtml
+#	EduHome.UI/Controllers/HomeController.cs
+#	EduHome.UI/ViewModel/HomeVM.cs
+#	EduHome.UI/Views/Home/Index.cshtml
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#	git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   EduHome.DataAccess/Contexts/AppDbContext.cs
+#	modified:   EduHome.DataAccess/Migrations/AppDbContextModelSnapshot.cs
+#	modified:   EduHome.UI/Areas/Admin/Views/Shared/_AdminLayout.cshtml
+#	modified:   EduHome.UI/Areas/Admin/Views/_ViewImports.cshtml
+#	modified:   EduHome.UI/Controllers/HomeController.cs
+#	modified:   EduHome.UI/ViewModel/HomeVM.cs
+#	modified:   EduHome.UI/Views/Home/Index.cshtml
+#

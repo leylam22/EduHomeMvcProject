@@ -1,0 +1,10 @@
+Merge branch 'master' of https://github.com/leylam22/EduHomeMvcProject
+
+# Conflicts:
+#	EduHome.DataAccess/Contexts/AppDbContext.cs
+#	EduHome.DataAccess/Migrations/AppDbContextModelSnapshot.cs
+#	EduHome.UI/Areas/Admin/Views/Shared/_AdminLayout.cshtml
+#	EduHome.UI/Areas/Admin/Views/_ViewImports.cshtml
+#	EduHome.UI/Controllers/HomeController.cs
+#	EduHome.UI/ViewModel/HomeVM.cs
+#	EduHome.UI/Views/Home/Index.cshtml
