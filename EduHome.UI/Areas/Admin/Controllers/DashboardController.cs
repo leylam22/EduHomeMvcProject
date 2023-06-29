@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace EduHome.UI.Areas.Admin.Controllers
+namespace EduHome.UI.Areas.Admin.Controllers;
+
+[Area("Admin")]
+public class DashboardController : Controller
 {
-    [Area("Admin")]
-    public class DashboardController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }
