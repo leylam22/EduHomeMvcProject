@@ -10,4 +10,5 @@ public class CoursePostVM
     public string? Description { get; set; }
     [Required, MaxLength(255)]
     public string? ImagePath { get; set; }
+
 }
