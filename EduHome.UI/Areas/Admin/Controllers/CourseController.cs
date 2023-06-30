@@ -93,6 +93,7 @@ public class CourseController : Controller
         {
             return NotFound();
         }
+        ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
         return View(Coursedb);
     }
     [Area("Admin")]

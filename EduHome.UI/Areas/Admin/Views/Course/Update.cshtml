@@ -31,12 +31,7 @@
                 </div>
             </div>
             <div class="row mb-4">
-                <label asp-for="CourseCatagory" class="col-sm-3 col-form-label"></label>
-                <div class="col-sm-9">
-                    <input asp-for="CourseCatagory" class="form-control" id="horizontal-firstname-input" placeholder="Enter Course Catagory ">
-                    <span class="text-danger" asp-validation-for="CourseCatagory"></span>
-                </div>
-                @*<label class="col-md-2 col-form-label">Select</label>
+                <label class="col-md-2 col-form-label">Course Catagory</label>
                 <div class="col-md-10">
                     <select class="form-select" name="CatagoryId">
                         @foreach (var catagory in ViewBag.Catagories)
@@ -44,7 +39,7 @@
                             <option value="@catagory.Id">@catagory.Catagory</option>
                         }
                     </select>
-                </div>*@
+                </div>
             </div>
             <div class="row justify-content-end">
                 <div class="col-sm-9">
