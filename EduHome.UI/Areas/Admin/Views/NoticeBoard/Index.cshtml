@@ -1,0 +1,41 @@
+﻿@model IEnumerable<NoticeBoard>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Notice Board Cards</h4>
+        <a asp-action="Create" class="btn btn-primary mb-3">Create New Notice Board</a>
+        <div class="table-responsive">
+            <table class="table table-dark mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date Time</th>
+                        <th>Description</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var notice in Model)
+                    {
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@notice.Date.ToString("M") , @notice.Date.Year</td>
+                            <td>@notice.Description</td>
+                            <td>
+                                <a asp-action="Update" asp-route-id="@notice.Id" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@notice.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
