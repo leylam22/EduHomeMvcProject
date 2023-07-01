@@ -23,6 +23,7 @@ namespace EduHome.UI.Controllers
                 Courses=await _context.Courses.ToListAsync(),
                 CourseCatagorys=await _context.CourseCatagories.ToListAsync(),
                 NoticeBoard=await _context.NoticeBoard.ToListAsync(),
+                Events=await _context.Events.ToListAsync()
             };
             return View(homevm);
         }
