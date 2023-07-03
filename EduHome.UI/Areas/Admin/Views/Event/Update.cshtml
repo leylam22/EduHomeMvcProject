@@ -1,0 +1,64 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Create Slider</h4>
+
+        <form method="post">
+            <div class="row mb-4">
+                <label asp-for="Date" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Date" class="form-control" id="horizontal-firstname-input" placeholder="Enter Date ">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label asp-for="StartTime" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="StartTime" class="form-control" id="horizontal-firstname-input" placeholder="Enter Start Time ">
+                    <span class="text-danger" asp-validation-for="StartTime"></span>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label asp-for="EndTime" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="EndTime" class="form-control" id="horizontal-firstname-input" placeholder="Enter End Time ">
+                    <span class="text-danger" asp-validation-for="EndTime"></span>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label asp-for="Title" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Title" class="form-control" id="horizontal-firstname-input" placeholder="Enter Title ">
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label asp-for="Location" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Location" class="form-control" id="horizontal-firstname-input" placeholder="Enter Location">
+                    <span class="text-danger" asp-validation-for="Location"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-end">
+                <div class="col-sm-9">
+                    <div>
+                        <button type="submit" class="btn btn-primary w-md">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- end card body -->
+</div>
+
+@section Script{
+    <partial name="_ValidationScript" />
+}
+
+
