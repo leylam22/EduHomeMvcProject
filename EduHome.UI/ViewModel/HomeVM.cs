@@ -10,5 +10,6 @@ public class HomeVM
     public IEnumerable<CourseCatagory> CourseCatagorys { get; set; }
     public IEnumerable<NoticeBoard> NoticeBoard { get; set; }
     public IEnumerable<Event> Events { get; set; }
+    public IEnumerable<Testimonial> Testimonials { get; set; }
 
 }
