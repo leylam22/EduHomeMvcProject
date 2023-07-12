@@ -17,4 +17,5 @@ public class Course : IEntity
 
     public int CourseCatagoryId { get; set; }
     public CourseCatagory CourseCatagory { get; set; }
+    public CourseDetail CourseDetail { get; set; }
 }
