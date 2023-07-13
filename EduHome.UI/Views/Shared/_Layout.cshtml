@@ -86,7 +86,29 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="contact.html">Buy Now</a>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li><a asp-controller="BuyNow" asp-action="Index">Buy Now</a></li>
+                                        }
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                <a style="color:royalblue">@User.Identity.Name</a>
+                                                @if (User.IsInRole("Admin"))
+                                                {
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin Dashboard</a>
+                                                </li>
+                                                }
+                                                <ul>
+                                                    <li><a asp-controller="Auth" asp-action="LogOut">Sing out</a></li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li><a asp-controller="Auth" asp-action="LogIn">Sing In</a></li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>

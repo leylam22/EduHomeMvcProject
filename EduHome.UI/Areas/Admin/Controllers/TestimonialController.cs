@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
 using EduHome.Core.Entities;
+using EduHome.Core.Utilites;
 using EduHome.DataAccess.Contexts;
 using EduHome.UI.Areas.Admin.ViewModels.TestimonialViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static EduHome.Core.Utilites.UserRole;
 
 namespace EduHome.UI.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = UserRole.Admin)]
 
 public class TestimonialController : Controller
 {

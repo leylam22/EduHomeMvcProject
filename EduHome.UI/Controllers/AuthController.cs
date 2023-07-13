@@ -1,4 +1,5 @@
 ﻿using EduHome.Core.Entities;
+using EduHome.Core.Utilites;
 using EduHome.UI.ViewModel.AuthViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -47,6 +48,7 @@ public class AuthController : Controller
                 ModelState.AddModelError("", item.Description);
             }
         }
+        await _userManager.AddToRoleAsync(user, UserRole.Member);
         return RedirectToAction(nameof(LogIn));
     }
 
@@ -55,6 +57,7 @@ public class AuthController : Controller
         return View();
     }
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> LogIn(LogInVM logIn)
     {
         if (!ModelState.IsValid) return View(logIn);
@@ -64,10 +67,10 @@ public class AuthController : Controller
             ModelState.AddModelError("", "Login ve ya parol yalnishdir");
             return View(logIn);
         }
-        if (string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Email))
-        {
-            return NotFound();
-        }
+        //if (string.IsNullOrEmpty(user.UserName) || string.IsNullOrEmpty(user.Email))
+        //{
+        //    return NotFound();
+        //}
         Microsoft.AspNetCore.Identity.SignInResult result = await
         _signInManager.PasswordSignInAsync(user, logIn.Password, logIn.RememberMe, true);
         if (result.IsLockedOut)
@@ -81,9 +84,9 @@ public class AuthController : Controller
             return View(logIn);
         }
 
-        return RedirectToAction("Home", "Index" , new {area="Admin"});
+        return RedirectToAction( "Index", "Home");
     }
-
+    [Authorize]
     public async Task<IActionResult> LogOut()
     {
         if (User.Identity.IsAuthenticated)
@@ -94,6 +97,7 @@ public class AuthController : Controller
     }
 
     #region Create Role
+    //[AllowAnonymous]
     //public async Task CreateRole()
     //{
     //    foreach (var role in Enum.GetValues(typeof(UserRole.Roles)))
@@ -106,4 +110,6 @@ public class AuthController : Controller
     //    }
     //}
     #endregion
+
+
 }
