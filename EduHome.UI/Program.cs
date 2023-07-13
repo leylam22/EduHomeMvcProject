@@ -2,6 +2,7 @@ using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
@@ -32,10 +33,18 @@ builder.Services.ConfigureApplicationCookie(option =>
     option.LoginPath = "/Auth/Login";
 });
 
+//var emailConfig = Configuration.GetSection("EmailConfiguration")
+//  .Get<EmailConfiguration>();
+//builder.Services.AddSingleton(emailConfig);
+//builder.Services.AddScoped<IEmailSender, EmailSender>();
+
 var app = builder.Build();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseStaticFiles();
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
