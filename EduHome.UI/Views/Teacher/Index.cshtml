@@ -27,25 +27,24 @@
             @foreach (var teacher in Model.Teachers)
             {
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="single-teacher mb-45">
-                    <div class="single-teacher-img">
-                            <a asp-controller="TeacherDetail" asp-action="Index" asp-route-id="@teacher.Id"><img src="@teacher.ImagePath" alt="teacher"></a>
-                    </div>
-                    <div class="single-teacher-content text-center">
-                            <h2><a asp-controller="TeacherDetail" asp-action="Index" asp-route-id="@teacher.Id">@teacher.FullName</a></h2>
-                        <h4>@teacher.Position</h4>
-                        <ul>
-                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                        </ul>
+                    <div class="single-teacher mb-45">
+                        <div class="single-teacher-img">
+                            <a asp-action="TeacherDetail" asp-route-id="@teacher.Id"><img src="@teacher.ImagePath"></a>
+                        </div>
+                        <div class="single-teacher-content text-center">
+                            <h2><a asp-action="TeacherDetail" asp-route-id="@teacher.Id">@teacher.FullName</a></h2>
+                            <h4>@teacher.Position</h4>
+                            <ul>
+                                <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>
 </div>
 <!-- Teacher End -->
-

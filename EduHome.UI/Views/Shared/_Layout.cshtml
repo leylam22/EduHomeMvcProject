@@ -56,7 +56,7 @@
                                                 <li><a href="index-5.html">Home Five</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a asp-controller="AboutUs" asp-action="Index">About</a></li>
                                         <li>
                                             <a asp-controller="Course" asp-action="Index">courses</a>
                                             <ul>
@@ -85,7 +85,7 @@
                                                 <li><a href="blog-right-side-bar.html">blog righ sidebar</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
                                         @if (User.Identity.IsAuthenticated)
                                         {
                                             <li><a asp-controller="BuyNow" asp-action="Index">Buy Now</a></li>

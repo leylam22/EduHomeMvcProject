@@ -25,7 +25,7 @@ namespace EduHome.UI.Controllers
                 CourseCatagorys=await _context.CourseCatagories.ToListAsync(),
                 NoticeBoard=await _context.NoticeBoard.ToListAsync(),
                 Events=await _context.Events.ToListAsync(),
-                Testimonials=await _context.Testimonials.ToListAsync()
+                Testimonials=await _context.Testimonials.ToListAsync(),
             };
             return View(homevm);
         }

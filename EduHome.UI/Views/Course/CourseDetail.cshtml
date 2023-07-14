@@ -1,4 +1,4 @@
-﻿@model HomeVM
+﻿ @model HomeVM
 @{
     ViewData["Title"] = "CourseDetail";
 }
@@ -23,7 +23,7 @@
 <!-- Blog Start -->
 @foreach (var detail in Model.Courses)
 {
-    @if (detail.Id == ViewBag.Id)
+    @if (detail.Id == ViewBag.CourseId)
     {
         <div class="courses-details-area blog-area pt-150 pb-140">
             <div class="container">
@@ -31,7 +31,7 @@
                     <div class="col-lg-8">
                         <div class="courses-details">
                             <div class="courses-details-img">
-                                <img src="@detail.ImagePath" alt="courses-details">
+                                <img src="@detail.ImagePath" style="width:600px" alt="courses-details">
                             </div>
                             <div class="course-details-content">
                                 <h2>@detail.Title</h2>
@@ -57,7 +57,7 @@
                                         <li>starts <span>@detail.CourseDetail.Starts.ToString("m") , @detail.CourseDetail.Starts.Year </span> </li>
                                         <li>duration <span>@detail.CourseDetail.Duration</span></li>
                                         <li>class duration <span>@detail.CourseDetail.ClassDuration</span></li>
-                                        <li>skill level <span>@detail.CourseDetail.Skill</span></li>
+                                        <li>skill level <span>@detail.CourseDetail.LanguageOption</span></li>
                                         <li>language <span>@detail.CourseDetail.LanguageOption</span></li>
                                         <li>students <span>@detail.CourseDetail.StudentCount</span></li>
                                         <li>assesments <span>@detail.CourseDetail.Assesment</span></li>

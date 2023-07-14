@@ -1,11 +1,9 @@
-﻿using Castle.Core.Smtp;
-using EduHome.Core.Entities;
+﻿using EduHome.Core.Entities;
 using EduHome.Core.Utilites;
 using EduHome.UI.ViewModel.AuthViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Plugins;
 
 namespace EduHome.UI.Controllers;
 
@@ -27,10 +25,7 @@ public class AuthController : Controller
         //_emailSender = emailSender;
     }
 
-    public IActionResult Register()
-    {
-        return View();
-    }
+    public IActionResult Register() => View();
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -116,10 +111,7 @@ public class AuthController : Controller
     //}
     #endregion
 
-    public IActionResult ForgotPassword()
-    {
-        return View();
-    }
+    public IActionResult ForgotPassword() => View();
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ForgotPassword(ForgotPasswordModel forgotPasswordModel)
@@ -136,10 +128,7 @@ public class AuthController : Controller
         //var message = new Message(new string[] { user.Email }, "Reset password token", callback, null);
         //await _emailSender.SendEmailAsync(message);
     }
-    public IActionResult ForgotPasswordConfirmation()
-    {
-        return View();
-    }
+    public IActionResult ForgotPasswordConfirmation() => View();
 
     public IActionResult ResetPassword(string token, string email)
     {
@@ -167,8 +156,5 @@ public class AuthController : Controller
         return RedirectToAction(nameof(ResetPasswordConfirmation));
     }
     [HttpGet]
-    public IActionResult ResetPasswordConfirmation()
-    {
-        return View();
-    }
+    public IActionResult ResetPasswordConfirmation() => View();
 }

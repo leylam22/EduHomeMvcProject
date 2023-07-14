@@ -12,5 +12,9 @@ public class HomeVM
     public IEnumerable<NoticeBoard> NoticeBoard { get; set; }
     public IEnumerable<Event> Events { get; set; }
     public IEnumerable<Testimonial> Testimonials { get; set; }
+    public IEnumerable<AboutUs> AboutUses { get; set; }
+    public IEnumerable<Teacher> Teachers { get; set; }
+    public IEnumerable<TeacherDetail> TeacherDetails { get; set; }
+
 
 }

@@ -24,7 +24,7 @@ public class CourseController : Controller
         };
         return View(vm);
     }
-
+    [HttpGet]
     public async Task<IActionResult> CourseDetail(int id)
     {
         if (id == 0) return NotFound();
