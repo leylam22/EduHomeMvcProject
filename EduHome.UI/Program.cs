@@ -1,5 +1,7 @@
 using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
+using EduHome.UI.Services.Concretes;
+using EduHome.UI.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
@@ -11,6 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddScoped<ICourseService, CourseService>();
+
 builder.Services.AddIdentity<AppUser, IdentityRole>(identityOptions => {
     identityOptions.User.RequireUniqueEmail = true;
 
@@ -26,8 +31,6 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(identityOptions => {
 
 }).AddEntityFrameworkStores<AppDbContext>()
   .AddDefaultTokenProviders();
-
-
 builder.Services.ConfigureApplicationCookie(option =>
 {
     option.LoginPath = "/Auth/Login";
@@ -38,9 +41,12 @@ builder.Services.ConfigureApplicationCookie(option =>
 //builder.Services.AddSingleton(emailConfig);
 //builder.Services.AddScoped<IEmailSender, EmailSender>();
 
+
+
 var app = builder.Build();
 
 app.UseAuthentication();
+app.UseRouting();
 app.UseAuthorization();
 
 app.UseStaticFiles();

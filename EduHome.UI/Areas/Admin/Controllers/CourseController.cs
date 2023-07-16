@@ -2,20 +2,23 @@
 using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using EduHome.UI.Areas.Admin.ViewModels.CourseViewModel;
+using EduHome.UI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
 namespace EduHome.UI.Areas.Admin.Controllers;
-
+[Area("Admin")]
 public class CourseController : Controller
 {
     private readonly AppDbContext _context;
     private readonly IMapper _mapper;
-    public CourseController(AppDbContext context, IMapper mapper)
+    private readonly ICourseService _courseService;
+    public CourseController(AppDbContext context, IMapper mapper, ICourseService courseService)
     {
         _context = context;
         _mapper = mapper;
+        _courseService = courseService;
     }
     [Area("Admin")]
     public async Task<IActionResult> Index()
@@ -29,6 +32,9 @@ public class CourseController : Controller
     public async Task<IActionResult> Create()
     {
         ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
+        ViewBag.Languages = await _context.Languages.ToListAsync();
+        ViewBag.Assesments = await _context.Assesments.ToListAsync();
+        ViewBag.SkillLevels = await _context.SkillLevels.ToListAsync();
         return View();
     }
 
@@ -39,8 +45,13 @@ public class CourseController : Controller
     {
         if (!ModelState.IsValid)
         {
+            //return View(coursePost);
             return BadRequest(ModelState);
         }
+        //if(await _courseService.CreateCourseAsync(coursePost)) return BadRequest();
+        //await _courseService.CreateCourseAsync(coursePost);
+        //return RedirectToAction(nameof(Index));
+
 
         var catagory = _context.CourseCatagories.Find(CatagoryId);
 
@@ -48,12 +59,18 @@ public class CourseController : Controller
         {
             return BadRequest();
         }
+        //CourseDetail courseDetail = new()
+        //{
+        //    courseDetail.Duration= coursePost.Duration,
 
+
+        //};
         Course course = new();
         course.Title = coursePost.Title;
         course.Description = coursePost.Description;
         course.ImagePath = coursePost.ImagePath;
         course.CourseCatagoryId = CatagoryId;
+
         await _context.AddAsync(course);
         await _context.SaveChangesAsync();
 

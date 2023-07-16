@@ -16,6 +16,7 @@ public class Course : IEntity
     public string? ImagePath { get; set; }
 
     public int CourseCatagoryId { get; set; }
-    public CourseCatagory CourseCatagory { get; set; }
-    public CourseDetail CourseDetail { get; set; }
+    public CourseCatagory? CourseCatagory { get; set; }
+    public int CourseDetailId { get; set; }
+    public CourseDetail? CourseDetail { get; set; }
 }
