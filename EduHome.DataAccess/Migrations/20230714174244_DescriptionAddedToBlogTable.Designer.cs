@@ -4,6 +4,7 @@ using EduHome.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230714174244_DescriptionAddedToBlogTable")]
+    partial class DescriptionAddedToBlogTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,9 +174,6 @@ namespace EduHome.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CourseCatagoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CourseDetailId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -775,7 +774,8 @@ namespace EduHome.DataAccess.Migrations
 
             modelBuilder.Entity("EduHome.Core.Entities.Course", b =>
                 {
-                    b.Navigation("CourseDetail");
+                    b.Navigation("CourseDetail")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EduHome.Core.Entities.CourseCatagory", b =>
