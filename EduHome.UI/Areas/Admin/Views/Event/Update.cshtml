@@ -1,4 +1,4 @@
-﻿@model Event
+﻿@model EventPostVM
 @{
     ViewData["Title"] = "Update";
 }
@@ -9,6 +9,22 @@
         <h4 class="card-title mb-4">Create Slider</h4>
 
         <form method="post">
+            <div class="row mb-4">
+                <label asp-for="ImagePath" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="ImagePath" class="form-control" id="horizontal-firstname-input" placeholder="Enter Date ">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label asp-for="Description" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Description" class="form-control" id="horizontal-firstname-input" placeholder="Enter Date ">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+            </div>
+
             <div class="row mb-4">
                 <label asp-for="Date" class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-9">

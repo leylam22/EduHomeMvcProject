@@ -1,56 +1,158 @@
-﻿@model Course
+﻿@model CoursePostVM
 @{
     ViewData["Title"] = "Update";
 }
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title mb-4">Update Course Items</h4>
 
-        <form method="post">
-            <img src="@Model.ImagePath" style="width:300px" />
-            <div class="row mb-4">
-                <label asp-for="ImagePath" class="col-sm-3 col-form-label"></label>
-                <div class="col-sm-9">
-                    <input asp-for="ImagePath" class="form-control" id="horizontal-firstname-input" placeholder="Enter Image Path ">
-                    <span class="text-danger" asp-validation-for="ImagePath"></span>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <label asp-for="Title" class="col-sm-3 col-form-label"></label>
-                <div class="col-sm-9">
-                    <input asp-for="Title" class="form-control" id="horizontal-firstname-input" placeholder="Enter Title ">
-                    <span class="text-danger" asp-asp-validation-for="Title"></span>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <label asp-for="Description" class="col-sm-3 col-form-label"></label>
-                <div class="col-sm-9">
-                    <input asp-for="Description" class="form-control" id="horizontal-firstname-input" placeholder="Enter Description ">
-                    <span class="text-danger" asp-validation-for="Description"></span>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <label class="col-md-2 col-form-label">Course Catagory</label>
-                <div class="col-md-10">
-                    <select class="form-select" name="CatagoryId">
-                        @foreach (var catagory in ViewBag.Catagories)
-                        {
-                            <option value="@catagory.Id">@catagory.Catagory</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="row justify-content-end">
-                <div class="col-sm-9">
-                    <div>
-                        <button asp-action="Update" type="submit" class="btn btn-primary w-md">Update</button>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <form method="post" class="app-search d-none d-lg-block">
+                    <div class="mb-3 row">
+                        <label asp-for="Title" for="example-text-input" class="col-md-2 col-form-label">Title</label>
+                        <div class="col-md-10">
+                            <input asp-for="Title" class="form-control" type="text">
+
+                        </div>
                     </div>
-                </div>
+                    @*<div class="mb-3 row">
+                    <label asp-for="Description" for="example-search-input" class="col-md-2 col-form-label">Description</label>
+                    <div class="col-md-10">
+                    <input asp-for="Description" class="form-control" type="text"
+                    id="example-search-input">
+                    </div>
+                    </div>*@
+                    <div class="mb-3 row">
+                        <label asp-for="ImagePath" for="example-email-input" class="col-md-2 col-form-label">Image Path</label>
+                        <div class="col-md-10">
+                            <input asp-for="ImagePath" class="form-control" type="text"
+                                   id="example-email-input">
+                        </div>
+                    </div>
+                    @*<div class="mb-3 row">
+                    <label class="col-md-2 col-form-label">Select Catagory</label>
+                    <div class="col-md-10">
+                    <select class="form-select" name="CatagoryId">
+                    @foreach (var catagory in ViewBag.Catagories)
+                    {
+                    <option value="@catagory.Id">@catagory.Catagory</option>
+                    }
+                    </select>
+                    </div>
+                    </div>*@
+                    <h3>Course Details</h3>
+                    @*<div class="mb-3 row">
+                        <label asp-for="ClassDuration" for="example-search-input" class="col-md-2 col-form-label">ClassDuration</label>
+                        <div class="col-md-10">
+                            <input asp-for="ClassDuration" class="form-control" type="text"
+                                   id="example-search-input">
+                        </div>
+                    </div>*@
+                    <div class="mb-3 row">
+                        <label asp-for="ClassDuration" for="example-search-input" class="col-md-2 col-form-label">ClassDuration</label>
+                        <div class="col-md-10">
+                            <input asp-for="ClassDuration" class="form-control" type="text"
+                                   id="example-search-input">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Duration" for="example-search-input" class="col-md-2 col-form-label">Duration</label>
+                        <div class="col-md-10">
+                            <input asp-for="Duration" class="form-control" type="text" id="example-search-input">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="CourseFee" for="example-search-input" class="col-md-2 col-form-label">CourseFee</label>
+                        <div class="col-md-10">
+                            <input asp-for="CourseFee" class="form-control" type="text" id="example-search-input">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Start" for="example-search-input" class="col-md-2 col-form-label">Start</label>
+                        <div class="col-md-10">
+                            <input asp-for="Start" class="form-control" type="text" id="example-search-input">
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label">Select Course Language</label>
+                            <div class="col-md-10">
+                                <div class="col-2">
+
+                                    <select class="form-select" asp-for="LanguageOptionId">
+                                        @foreach (var language in ViewBag.Languages)
+                                        {
+                                            <option value="@language.Id">@language.LanguageOption</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label">Select Course Level</label>
+                            <div class="col-md-10">
+                                <div class="col-2">
+                                    <select class="form-select" asp-for="SkillLevelId">
+                                        @foreach (var skillLevel in ViewBag.SkillLevels)
+                                        {
+                                            <option value="@skillLevel.Id">@skillLevel.Skill</option>
+                                        }
+                                    </select>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label">Select Course Assesments</label>
+                            <div class="col-md-10">
+                                <div class="col-2">
+                                    <select class="form-select" asp-for="AssesmentId">
+                                        @foreach (var assesment in ViewBag.Assesments)
+                                        {
+                                            <option value="@assesment.Id">@assesment.AssesmentType</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="mb-3 row">
+                            <label class="col-md-2 col-form-label">Select Category</label>
+                            <div class="col-md-10">
+                                <div class="col-2">
+
+                                    <select class="form-select" asp-for="CourseCatagoryId">
+                                        @foreach (var catagory in ViewBag.Catagories)
+                                        {
+                                            <option value="@catagory.Id">@catagory.Catagory</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Description" class="col-md-2 col-form-label">Description</label>
+                        <textarea asp-for="Description" id="tiny"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-    <!-- end card body -->
+        </div>
+    </div> <!-- end col -->
 </div>
 
 @section Script{

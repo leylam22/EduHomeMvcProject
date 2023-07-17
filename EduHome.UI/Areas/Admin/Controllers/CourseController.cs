@@ -41,7 +41,7 @@ public class CourseController : Controller
     [Area("Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(CoursePostVM coursePost, int CatagoryId)
+    public async Task<IActionResult> Create(CoursePostVM coursePost)
     {
         if (!ModelState.IsValid)
         {
@@ -53,7 +53,7 @@ public class CourseController : Controller
         //return RedirectToAction(nameof(Index));
 
 
-        var catagory = _context.CourseCatagories.Find(CatagoryId);
+        var catagory = _context.CourseCatagories.Find(coursePost.CourseCatagoryId);
 
         if (catagory is null)
         {
@@ -69,7 +69,7 @@ public class CourseController : Controller
         course.Title = coursePost.Title;
         course.Description = coursePost.Description;
         course.ImagePath = coursePost.ImagePath;
-        course.CourseCatagoryId = CatagoryId;
+        course.CourseCatagoryId = coursePost.CourseCatagoryId;
 
         await _context.AddAsync(course);
         await _context.SaveChangesAsync();
@@ -105,13 +105,14 @@ public class CourseController : Controller
     [Area("Admin")]
     public async Task<IActionResult> Update(int id)
     {
-        Course? Coursedb = await _context.Courses.FindAsync(id);
-        if (Coursedb == null)
-        {
-            return NotFound();
-        }
+        Course? Coursedb = await _context.Courses.Include(cd=>cd.CourseDetail).FirstOrDefaultAsync(a=>a.Id==id);
         ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
-        return View(Coursedb);
+        ViewBag.Languages = await _context.Languages.ToListAsync();
+        ViewBag.Assesments = await _context.Assesments.ToListAsync();
+        ViewBag.SkillLevels = await _context.SkillLevels.ToListAsync();
+        if (Coursedb is null)  return NotFound();
+        var CoursVm = _mapper.Map<CoursePostVM>(Coursedb);
+        return View(CoursVm);
     }
     [Area("Admin")]
     [HttpPost]
@@ -124,8 +125,10 @@ public class CourseController : Controller
         }
         if (!ModelState.IsValid)
         {
-            //return View(Course);
             ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
+            ViewBag.Languages = await _context.Languages.ToListAsync();
+            ViewBag.Assesments = await _context.Assesments.ToListAsync();
+            ViewBag.SkillLevels = await _context.SkillLevels.ToListAsync();
             return View(Course);
         }
         Course? Coursedb = await _context.Courses.AsNoTracking().FirstOrDefaultAsync(c => c.Id == Id);

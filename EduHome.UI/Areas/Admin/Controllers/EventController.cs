@@ -73,30 +73,33 @@ public class EventController : Controller
 
     public async Task<IActionResult> Update(int id)
     {
-        Event? Eventdb = await _context.Events.FindAsync(id);
+        Event? Eventdb = await _context.Events.Include(ed => ed.EventDetails).FirstOrDefaultAsync(a => a.Id == id);
         if (Eventdb == null)
         {
             return NotFound();
         }
-        return View(Eventdb);
+        var events = _mapper.Map<EventPostVM>(Eventdb);
+        return View(events);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Update(int Id, Event events)
+    public async Task<IActionResult> Update(int Id, EventPostVM events)
     {
-        if (Id != events.Id)
-        {
-            return BadRequest();
-        }
+        //if (Id != events.Id)
+        //{
+        //    return BadRequest();
+        //}
         if (!ModelState.IsValid)
         {
             return View(events);
         }
-        Event? Eventdb = await _context.Events.AsNoTracking().FirstOrDefaultAsync(b => b.Id == Id);
+        var map = _mapper.Map<Event>(events);
+        Event? Eventdb = await _context.Events.Include(ed=>ed.EventDetails).FirstOrDefaultAsync(a=>a.Id==Id);
         if (Eventdb == null)
         {
             return NotFound();
         }
+        //_context.Events.Update(Eventdb);
         _context.Entry(events).State = EntityState.Modified;
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));

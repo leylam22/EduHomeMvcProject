@@ -6,8 +6,11 @@ public class CoursePostVM
 {
     [Required, MaxLength(10)]
     public string? Title { get; set; }
-    [Required, MaxLength(120)]
+   
+    [Required]
     public string? Description { get; set; }
+
+
     [Required, MaxLength(255)]
     public string? ImagePath { get; set; }
     public DateTime Start { get; set; }
