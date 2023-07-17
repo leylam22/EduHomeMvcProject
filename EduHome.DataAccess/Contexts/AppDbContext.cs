@@ -18,9 +18,13 @@ public class AppDbContext:IdentityDbContext<AppUser>
     public DbSet<SkillLevel> SkillLevels { get; set; } = null!;
     public DbSet<NoticeBoard> NoticeBoard { get; set; } = null!;
     public DbSet<Event> Events { get; set; } = null!;
+    public DbSet<EventsDetail> EventsDetails { get; set; } = null!;
+    public DbSet<EventSpeaker> EventSpeakers { get; set; } = null!;
+    public DbSet<Speaker> Speakers { get; set; } = null!;
     public DbSet<Testimonial> Testimonials { get; set; } = null!;
     public DbSet<TeacherDetail> TeacherDetails { get; set; } = null!;
     public DbSet<Teacher> Teachers { get; set; } = null!;
     public DbSet<AboutUs> AboutUses { get; set; } = null!;
+    
 
 }

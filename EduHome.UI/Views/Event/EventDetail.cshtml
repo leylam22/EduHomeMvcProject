@@ -1,6 +1,6 @@
 ﻿@model HomeVM
 @{
-    ViewData["Title"] = "BlogDetail";
+    ViewData["Title"] = "EventDetail";
 }
 
 <!-- Banner Area Start -->
@@ -11,7 +11,7 @@
                 <div class="col-12">
                     <div class="banner-content-wrapper">
                         <div class="banner-content">
-                            <h2>blog details</h2>
+                            <h2>event / details</h2>
                         </div>
                     </div>
                 </div>
@@ -20,39 +20,59 @@
     </div>
 </div>
 <!-- Banner Area End -->
-<!-- Blog Start -->
-@foreach (var blog in Model.Blogs)
+<!-- Event Details Start -->
+@foreach (var events in Model.Events)
 {
-    @if (blog.Id == ViewBag.BlogId)
+    @if (events.Id==ViewBag.EventId)
     {
-        <div class="blog-details-area pt-150 pb-140">
+        <div class="event-details-area blog-area pt-150 pb-140">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="blog-details">
-                            <div class="blog-details-img">
-                                <img src="@blog.Image" alt="blog-details">
+                        <div class="event-details">
+                            <div class="event-details-img">
+                                <img src="@events.EventDetails.ImagePath" style="width:500px" alt="event-details">
+                                <div class="event-date">
+                                    <h3>@events.Date.ToString("m")</h3>
+                                </div>
                             </div>
-                            <div class="blog-details-content">
-                                <h2>@blog.Title </h2>
-                                <h6>By @blog.Blogger  /  @blog.Date.ToString("M"), @blog.Date.Year   /  <i class="fa fa-comments-o"></i> 4</h6>
-                                <p>@blog.Description </p>
-
+                            <div class="event-details-content">
+                                <h2>ADVANCE WED DEVELOPMENT WORKSHOP</h2>
+                                <ul>
+                                    <li><span>time : </span>@events.StartTime.ToString("hh:mm tt")- @events.EndTime.ToString("hh:mm tt")</li>
+                                    <li><span>venue : </span>@events.Location</li>
+                                </ul>
+                                <p>@events.EventDetails.Description </p>
+                                <div class="speakers-area fix">
+                                    <h4>speakers</h4>
+                                    @foreach (var speaker in Model.EventSpeakers)
+                                    {
+                                        <div class="single-speaker">
+                                            <div class="speaker-img">
+                                                <img src="@speaker.Speaker.ImagePath" alt="speaker">
+                                            </div>
+                                            <div class="speaker-name">
+                                                <h5>@speaker.Speaker.Name</h5>
+                                                <p>@speaker.Speaker.Position </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                             <div class="reply-area">
                                 <h3>LEAVE A REPLY</h3>
                                 <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
                                 <form id="contact-form" action="#">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-md-12">
                                             <p>Name</p>
                                             <input type="text" name="name" id="name">
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-12">
                                             <p>Email</p>
                                             <input type="text" name="email" id="email">
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-12">
                                             <p>Subject</p>
                                             <input type="text" name="subject" id="subject">
                                             <p>Massage</p>
@@ -67,7 +87,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog-sidebar right">
-                            <div class="single-blog-widget mb-47">
+                            <div class="single-blog-widget mb-50">
                                 <h3>search</h3>
                                 <div class="blog-search">
                                     <form id="search" action="#">
@@ -78,23 +98,22 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="single-blog-widget mb-47">
+                            <div class="single-blog-widget mb-50">
                                 <h3>categories</h3>
                                 <ul>
-                                    @foreach (var categories in Model.CourseCatagorys)
+                                    @foreach (var catagory in Model.CourseCatagorys)
                                     {
-
-                                        <li><a href="#">@categories.Catagory</a></li>
+                                        <li><a href="#">@catagory.Catagory</a></li>
                                     }
                                 </ul>
                             </div>
-                            <div class="single-blog-widget mb-47">
+                            <div class="single-blog-widget mb-50">
                                 <div class="single-blog-banner">
                                     <a href="blog-details.html" id="blog"><img src="~/assetsf/img/blog/blog-img.jpg" alt="blog"></a>
                                     <h2>best<br> eductaion<br> theme</h2>
                                 </div>
                             </div>
-                            <div class="single-blog-widget mb-47">
+                            <div class="single-blog-widget mb-50">
                                 <h3>latest post</h3>
                                 <div class="single-post mb-30">
                                     <div class="single-post-img">
@@ -157,4 +176,5 @@
         </div>
     }
 }
-<!-- Blog End -->
+<!-- Event Details End -->
+

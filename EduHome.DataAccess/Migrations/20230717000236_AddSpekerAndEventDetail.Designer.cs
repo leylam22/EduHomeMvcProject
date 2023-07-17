@@ -4,6 +4,7 @@ using EduHome.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717000236_AddSpekerAndEventDetail")]
+    partial class AddSpekerAndEventDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,9 +289,6 @@ namespace EduHome.DataAccess.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EventDetailId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -329,8 +328,7 @@ namespace EduHome.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
+                    b.HasIndex("EventId");
 
                     b.ToTable("EventsDetails");
                 });
@@ -794,8 +792,8 @@ namespace EduHome.DataAccess.Migrations
             modelBuilder.Entity("EduHome.Core.Entities.EventsDetail", b =>
                 {
                     b.HasOne("EduHome.Core.Entities.Event", "Events")
-                        .WithOne("EventDetails")
-                        .HasForeignKey("EduHome.Core.Entities.EventsDetail", "EventId")
+                        .WithMany()
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -805,7 +803,7 @@ namespace EduHome.DataAccess.Migrations
             modelBuilder.Entity("EduHome.Core.Entities.EventSpeaker", b =>
                 {
                     b.HasOne("EduHome.Core.Entities.Event", "Event")
-                        .WithMany("EventSpeakers")
+                        .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -891,14 +889,6 @@ namespace EduHome.DataAccess.Migrations
             modelBuilder.Entity("EduHome.Core.Entities.CourseCatagory", b =>
                 {
                     b.Navigation("Courses");
-                });
-
-            modelBuilder.Entity("EduHome.Core.Entities.Event", b =>
-                {
-                    b.Navigation("EventDetails")
-                        .IsRequired();
-
-                    b.Navigation("EventSpeakers");
                 });
 
             modelBuilder.Entity("EduHome.Core.Entities.Speaker", b =>

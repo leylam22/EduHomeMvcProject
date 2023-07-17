@@ -4,6 +4,7 @@ using EduHome.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717001136_AddEventSpeakersToEvent")]
+    partial class AddEventSpeakersToEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -286,9 +288,6 @@ namespace EduHome.DataAccess.Migrations
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("EventDetailId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -794,7 +793,7 @@ namespace EduHome.DataAccess.Migrations
             modelBuilder.Entity("EduHome.Core.Entities.EventsDetail", b =>
                 {
                     b.HasOne("EduHome.Core.Entities.Event", "Events")
-                        .WithOne("EventDetails")
+                        .WithOne("Details")
                         .HasForeignKey("EduHome.Core.Entities.EventsDetail", "EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -895,7 +894,7 @@ namespace EduHome.DataAccess.Migrations
 
             modelBuilder.Entity("EduHome.Core.Entities.Event", b =>
                 {
-                    b.Navigation("EventDetails")
+                    b.Navigation("Details")
                         .IsRequired();
 
                     b.Navigation("EventSpeakers");
