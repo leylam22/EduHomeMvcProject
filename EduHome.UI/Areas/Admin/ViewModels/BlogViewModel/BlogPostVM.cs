@@ -11,4 +11,5 @@ public class BlogPostVM
     public DateTime Date { get; set; }
     [Required, StringLength(250)]
     public string Title { get; set; } = null!;
+    public string Description { get; set; }=null!;
 }

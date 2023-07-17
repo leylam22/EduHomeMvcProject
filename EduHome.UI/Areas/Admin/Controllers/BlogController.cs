@@ -102,4 +102,5 @@ public class BlogController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
+
 }
